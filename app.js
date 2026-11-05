@@ -73,9 +73,11 @@
     $('#signin').hidden = false; $('#app').hidden = true; $('#who').hidden = true;
     const e = $('#signin-err'); e.hidden = !msg; e.textContent = msg || '';
   }
+  const NOT_READY = 'ระบบยังไม่ได้ตั้งค่า (ผู้วิจัยกำลังติดตั้ง) กรุณาลองใหม่ภายหลัง';
+  const configured = () => !!(CFG.mock || (CFG.clientId && CFG.apiUrl));
   function initSignin() {
     if (CFG.mock) { window.AEVMock.renderPicker($('#gsi'), onCredential); return; }
-    if (!CFG.clientId || !CFG.apiUrl) { showSignin('ระบบยังไม่ได้ตั้งค่า (ผู้วิจัยกำลังติดตั้ง) กรุณาลองใหม่ภายหลัง'); return; }
+    if (!configured()) { showSignin(NOT_READY); return; }
     const s = document.createElement('script');
     s.src = 'https://accounts.google.com/gsi/client'; s.async = true;
     s.onerror = () => showSignin('โหลดปุ่มลงชื่อเข้าใช้ของ Google ไม่ได้ ตรวจอินเทอร์เน็ตหรือปิดตัวบล็อกโฆษณาแล้วลองใหม่');
@@ -93,7 +95,7 @@
   }
   async function boot() {
     token = loadTok();
-    if (!token || jwtExp(token) < Date.now() + 20000) { clearTok(); showSignin(); return; }
+    if (!token || jwtExp(token) < Date.now() + 20000) { clearTok(); showSignin(configured() ? '' : NOT_READY); return; }
     const r = await api('me');
     if (!r.ok) { if (r.code !== 'AUTH') { clearTok(); showSignin(r.message); } return; }
     me = r.data;
