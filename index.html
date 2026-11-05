@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI-MOS Expert Verification</title>
+<link rel="icon" href="assets/ADTlogo.png">
+<link rel="stylesheet" href="theme.css?v=1">
+</head>
+<body>
+<div id="mockbar" class="mockbar" hidden></div>
+<header class="top" id="top">
+  <div class="brand">
+    <img class="logo" src="assets/ADTlogo.png" alt="สำนักวิชาเทคโนโลยีดิจิทัลประยุกต์ มฟล." onerror="this.style.display='none'">
+    <div>
+      <h1>AI-MOS: การตรวจสอบโดยผู้เชี่ยวชาญ</h1>
+      <div class="org">สำนักวิชาเทคโนโลยีดิจิทัลประยุกต์ มหาวิทยาลัยแม่ฟ้าหลวง</div>
+      <div class="sub">งานวิจัยต้นแบบ AI ช่วยคัดกรองใบสั่งยา ใช้ข้อมูลจำลองทั้งหมด ไม่ใช่คำแนะนำทางการแพทย์</div>
+    </div>
+  </div>
+  <div class="who" id="who" hidden>
+    <span><span class="id" id="who-name"></span> <span class="chip info" id="who-role"></span></span>
+    <button class="btn quiet" id="signout" type="button">ออกจากระบบ</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="card" id="signin" aria-labelledby="signin-h">
+    <h2 id="signin-h">ลงชื่อเข้าใช้ด้วยบัญชี Google</h2>
+    <p>หน้านี้ใช้เก็บความเห็นของเภสัชกรผู้เชี่ยวชาญต่อระบบต้นแบบ AI-MOS (AI Medication Order Screening) ใช้ได้เฉพาะบัญชี Google ที่ผู้วิจัยเชิญไว้</p>
+    <div id="gsi" style="min-height:44px"></div>
+    <p class="err" id="signin-err" role="alert" hidden></p>
+    <div class="note">
+      <b>สิ่งที่ระบบเก็บ:</b> อีเมลใช้ตรวจสิทธิ์และเก็บในรายชื่อของผู้วิจัยเท่านั้น คำตอบทุกข้อบันทึกด้วยรหัสผู้ประเมิน (เช่น R01) ไม่บันทึกชื่อหรือสถานที่ทำงาน
+      ข้อมูลใบสั่งยาเป็นข้อมูลจำลอง ไม่มีข้อมูลผู้ป่วยจริง
+    </div>
+  </section>
+
+  <div id="app" hidden>
+    <nav class="ftabs" id="tabs" role="tablist" aria-label="งานของท่าน"></nav>
+    <section class="card tabbody" id="view" role="tabpanel"></section>
+  </div>
+</main>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="config.js?v=1"></script>
+<script>if (window.AEV_CONFIG && window.AEV_CONFIG.mock) document.write('<script src="mock.js?v=1"><\/script>');</script>
+<script src="app.js?v=1"></script>
+</body>
+</html>
