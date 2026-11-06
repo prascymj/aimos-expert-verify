@@ -1,5 +1,4 @@
-/* Theme = the EC-MFU form helper (raw/36_LLMEthic/webapp-js/src/app.css): ADT School CI navy #061C90, sky #1CA4E1.
-   Flat: 4px corners, no shadows, 1px frames. */
+/* Flat theme: 4px corners, no shadows, 1px frames. */
 :root {
   --bg: #f6f7f9; --panel: #ffffff; --ink: #121317; --muted: #585c66; --line: #d6d9e0;
   --accent: #061c90; --accent-ink: #ffffff; --accent2: #1ca4e1; --soft: #eef1f6;
